@@ -13,7 +13,6 @@ jobs:
     - name: folder make
       run: |
            mkdir -p folder && cp ab.txt folder
-           cd folder && ls
            
     - name: upload to s3
       uses: shallwefootball/s3-upload-action@master
