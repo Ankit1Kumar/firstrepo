@@ -10,7 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: setup node
-      uses: actions/setup-node@v2-beta
+    - name: folder make
+      run: mkdir -p folder
+    - name: upload to s3
+      uses: shallwefootball/s3-upload-action@master
       with:
-        node-version: '12'
+          aws_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: ${{ secrets.AWS_BUCKET }}
+          source_dir: folder
+          destination_dir: github/
